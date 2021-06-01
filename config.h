@@ -3,9 +3,9 @@
 
 /* appearance */
 static const unsigned int borderpx       = 3;  /* border pixel of windows */
-static const unsigned int snap           = 32;  /* snap pixel */
-static const unsigned int gappih         = 10;  /* horiz inner gap between windows */
-static const unsigned int gappiv         = 10;  /* vert inner gap between windows */
+static const unsigned int snap           = 10;  /* snap pixel */
+static const unsigned int gappih         = 5;  /* horiz inner gap between windows */
+static const unsigned int gappiv         = 5;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 10;  /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov         = 10;  /* vert outer gap between windows and screen edge */
 static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
@@ -61,7 +61,7 @@ static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
 
-static const unsigned int baralpha = 0xd0;
+static const unsigned int baralpha = 0;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
 	/*                       fg      bg        border     */
@@ -124,7 +124,6 @@ static char *tagicons[][NUMTAGS] = {
 	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E", "F", "G", "H", "I" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
-
 /* There are two options when it comes to per-client rules:
  *  - a typical struct table or
  *  - using the RULE macro
@@ -194,10 +193,10 @@ static const Layout layouts[] = {
 	{ "[]=",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, TOP_TO_BOTTOM, 0, NULL } }, // default tile layout
  	{ "><>",      NULL,             {0} },    /* no layout function means floating behavior */
 	{ "[M]",      flextile,         { -1, -1, NO_SPLIT, MONOCLE, MONOCLE, 0, NULL } }, // monocle
+	{ "TTT",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // bstack
 	{ "|||",      flextile,         { -1, -1, SPLIT_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // columns (col) layout
 	{ ">M>",      flextile,         { -1, -1, FLOATING_MASTER, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // floating master
 	{ "[D]",      flextile,         { -1, -1, SPLIT_VERTICAL, TOP_TO_BOTTOM, MONOCLE, 0, NULL } }, // deck
-	{ "TTT",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, LEFT_TO_RIGHT, 0, NULL } }, // bstack
 	{ "===",      flextile,         { -1, -1, SPLIT_HORIZONTAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, 0, NULL } }, // bstackhoriz
 	{ "|M|",      flextile,         { -1, -1, SPLIT_CENTERED_VERTICAL, LEFT_TO_RIGHT, TOP_TO_BOTTOM, TOP_TO_BOTTOM, NULL } }, // centeredmaster
 	{ "-M-",      flextile,         { -1, -1, SPLIT_CENTERED_HORIZONTAL, TOP_TO_BOTTOM, LEFT_TO_RIGHT, LEFT_TO_RIGHT, NULL } }, // centeredmaster horiz
@@ -244,13 +243,23 @@ static const char *pcmanfm[]  = { "pcmanfm", NULL };
 static const char *volinc[] = {"/home/sophos/volume-notification-dunst/volume.sh", "up"};
 static const char *voldec[] = {"/home/sophos/volume-notification-dunst/volume.sh", "down"};
 static const char *volmute[] = {"/home/sophos/volume-notification-dunst/volume.sh",  "mute"};
+static const char *plrplay[] = {"playerctl", "--player=mpd,firefox, vlc", "play-pause"};
+static const char *plrnxt[] = {"playerctl", "--player=mpd,firefox, vlc", "next"};
+static const char *plrprev[] = {"playerctl", "--player=mpd,firefox, vlc", "previous"};
+//static const char *plrplay[] = {"playerctl", "play-pause"};
+//static const char *plrnxt[] = {"playerctl",  "next"};
+//static const char *plrprev[] = {"playerctl",  "previous"};
 static Key keys[] = {
 	/* modifier                     key            function                argument */
 
+	{ 0,                       XK_F8,     spawn, 		           {.v = plrplay} },
+	{ 0,                       XK_F7,     spawn, 		           {.v = plrprev} },
+	{ 0,                       XK_F9,     spawn, 		           {.v = plrnxt} },
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = volinc   } },
     { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = voldec } },
 	{ 0,                       XF86XK_AudioMute, spawn,        {.v = volmute } },
 	{ MODKEY,                       XK_Return,     spawn, 		           {.v = termcmd } },
+	{ MODKEY,                       XK_grave,      cyclelayout, 		           {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = dmenucmd } },
 	{ MODKEY,		                XK_f,      	   spawn,          		   {.v = firefox } },
 	{ MODKEY,		                XK_s,      	   spawn,          		   {.v = subl } },
@@ -303,7 +312,6 @@ static Key keys[] = {
 	{ MODKEY, 			            XK_w,          killclient,             {0} },
 	{ MODKEY|ShiftMask,             XK_q,          quit,                   {0} },
 	{ MODKEY,                       XK_t,          setlayout,              {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,          setlayout,              {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,          setlayout,              {.v = &layouts[2]} },
 	{ MODKEY|ControlMask,           XK_t,          rotatelayoutaxis,       {.i = +1 } },   /* flextile, 1 = layout axis */
 	{ MODKEY|ControlMask,           XK_Tab,        rotatelayoutaxis,       {.i = +2 } },   /* flextile, 2 = master axis */
