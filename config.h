@@ -71,7 +71,8 @@ static const unsigned int alphas[][3] = {
 	[SchemeTitleSel]     = { OPAQUE, baralpha, borderalpha },
 	[SchemeTagsNorm]     = { OPAQUE, baralpha, borderalpha },
 	[SchemeTagsSel]      = { OPAQUE, baralpha, borderalpha },
-	[SchemeHid]          = { OPAQUE, baralpha, borderalpha },
+	[SchemeHidNorm]          = { OPAQUE, baralpha, borderalpha },
+	[SchemeHidSel]          = { OPAQUE, baralpha, borderalpha },
 	[SchemeUrg]          = { OPAQUE, baralpha, borderalpha },
 };
 
@@ -83,7 +84,8 @@ static char *colors[][ColCount] = {
 	[SchemeTitleSel]     = { titleselfgcolor,  titleselbgcolor,  titleselbordercolor,  titleselfloatcolor },
 	[SchemeTagsNorm]     = { tagsnormfgcolor,  tagsnormbgcolor,  tagsnormbordercolor,  tagsnormfloatcolor },
 	[SchemeTagsSel]      = { tagsselfgcolor,   tagsselbgcolor,   tagsselbordercolor,   tagsselfloatcolor },
-	[SchemeHid]          = { hidfgcolor,       hidbgcolor,       hidbordercolor,       hidfloatcolor },
+	[SchemeHidNorm]          = { hidfgcolor,       hidbgcolor,       hidbordercolor,       hidfloatcolor },
+	[SchemeHidSel]          = { hidfgcolor,       hidbgcolor,       hidbordercolor,       hidfloatcolor },
 	[SchemeUrg]          = { urgfgcolor,       urgbgcolor,       urgbordercolor,       urgfloatcolor },
 };
 
