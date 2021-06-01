@@ -141,7 +141,8 @@ enum {
 	SchemeTitleSel,
 	SchemeTagsNorm,
 	SchemeTagsSel,
-	SchemeHid,
+	SchemeHidNorm,
+	SchemeHidSel,
 	SchemeUrg,
 	#if BAR_FLEXWINTITLE_PATCH
 	SchemeFlexActTTB,
@@ -3368,7 +3369,9 @@ setfullscreen(Client *c, int fullscreen)
 void
 setlayout(const Arg *arg)
 {
+	#if !TOGGLELAYOUT_PATCH
 	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt]) {
+	#endif // TOGGLELAYOUT_PATCH
 		#if PERTAG_PATCH
 		selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;
 		selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag];
@@ -3386,8 +3389,14 @@ setlayout(const Arg *arg)
 			}
 		}
 		#endif // EXRESIZE_PATCH
+	#if !TOGGLELAYOUT_PATCH
 	}
+	#endif // TOGGLELAYOUT_PATCH
+	#if TOGGLELAYOUT_PATCH
+	if (arg && arg->v && arg->v != selmon->lt[selmon->sellt ^ 1])
+	#else
 	if (arg && arg->v)
+	#endif // TOGGLELAYOUT_PATCH
 	#if PERTAG_PATCH
 		selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt] = (Layout *)arg->v;
 	selmon->lt[selmon->sellt] = selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt];
@@ -4606,11 +4615,11 @@ view(const Arg *arg)
 	if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
 	#endif // EMPTYVIEW_PATCH
 	{
-		#if VIEW_SAME_TAG_GIVES_PREVIOUS_TAG_PATCH
+		#if TOGGLETAG_PATCH
 		view(&((Arg) { .ui = 0 }));
-		#endif // VIEW_SAME_TAG_GIVES_PREVIOUS_TAG_PATCH
+		#endif // TOGGLETAG_PATCH
 		return;
-    }
+	}
 	selmon->seltags ^= 1; /* toggle sel tagset */
 	#if PERTAG_PATCH
 	pertagview(arg);
