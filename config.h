@@ -61,7 +61,7 @@ static char urgbordercolor[]             = "#ff0000";
 static char urgfloatcolor[]              = "#db8fd9";
 
 
-static const unsigned int baralpha = 0;
+static const unsigned int baralpha = 120;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int alphas[][3] = {
 	/*                       fg      bg        border     */
@@ -238,7 +238,7 @@ static const char *dmenucmd[] = {
 	"-sf", selfgcolor,
 	NULL
 };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *firefox[]  = { "firefox", NULL };
 static const char *subl[]  = { "subl", NULL };
 static const char *pcmanfm[]  = { "pcmanfm", NULL };
