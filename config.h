@@ -156,7 +156,7 @@ static const Rule rules[] = {
 	RULE(.wintype = WTYPE "TOOLBAR", .isfloating = 1)
 	RULE(.wintype = WTYPE "SPLASH", .isfloating = 1)
 	RULE(.class = "Gimp", .tags = 1 << 4)
-	RULE(.class = "Firefox", .tags = 1 << 7)
+	RULE(.class = "Firefox", .tags = 0)
 };
 
 
@@ -242,9 +242,9 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *firefox[]  = { "firefox", NULL };
 static const char *subl[]  = { "subl", NULL };
 static const char *pcmanfm[]  = { "pcmanfm", NULL };
-static const char *volinc[] = {"/home/sophos/volume-notification-dunst/volume.sh", "up"};
-static const char *voldec[] = {"/home/sophos/volume-notification-dunst/volume.sh", "down"};
-static const char *volmute[] = {"/home/sophos/volume-notification-dunst/volume.sh",  "mute"};
+static const char *volinc[] = {"volume.sh", "up"};
+static const char *voldec[] = {"volume.sh", "down"};
+static const char *volmute[] = {"volume.sh",  "mute"};
 static const char *plrplay[] = {"playerctl", "--player=mpd,firefox, vlc", "play-pause"};
 static const char *plrnxt[] = {"playerctl", "--player=mpd,firefox, vlc", "next"};
 static const char *plrprev[] = {"playerctl", "--player=mpd,firefox, vlc", "previous"};
@@ -257,9 +257,9 @@ static Key keys[] = {
 	{ 0,                       XK_F8,     spawn, 		           {.v = plrplay} },
 	{ 0,                       XK_F7,     spawn, 		           {.v = plrprev} },
 	{ 0,                       XK_F9,     spawn, 		           {.v = plrnxt} },
-	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = volinc   } },
-    { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = voldec } },
-	{ 0,                       XF86XK_AudioMute, spawn,        {.v = volmute } },
+	//{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = volinc   } },
+//    { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = voldec } },
+//	{ 0,                       XF86XK_AudioMute, spawn,        {.v = volmute } },
 	{ MODKEY,                       XK_Return,     spawn, 		           {.v = termcmd } },
 	{ MODKEY,                       XK_grave,      cyclelayout, 		           {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = dmenucmd } },
