@@ -122,7 +122,7 @@ static char *colors[][ColCount] = {
  */
 static char *tagicons[][NUMTAGS] = {
 //  [DEFAULT_TAGS]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-	[DEFAULT_TAGS]        = { "", "", "", "", "", "6", "7", "8", "9" },
+	[DEFAULT_TAGS]        = { "", "", "", "", "", "", "", "8", "9" },
 	[ALTERNATIVE_TAGS]    = { "A", "B", "C", "D", "E", "F", "G", "H", "I" },
 	[ALT_TAGS_DECORATION] = { "<1>", "<2>", "<3>", "<4>", "<5>", "<6>", "<7>", "<8>", "<9>" },
 };
@@ -257,9 +257,9 @@ static Key keys[] = {
 	{ 0,                       XK_F8,     spawn, 		           {.v = plrplay} },
 	{ 0,                       XK_F7,     spawn, 		           {.v = plrprev} },
 	{ 0,                       XK_F9,     spawn, 		           {.v = plrnxt} },
-	//{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = volinc   } },
-//    { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = voldec } },
-//	{ 0,                       XF86XK_AudioMute, spawn,        {.v = volmute } },
+	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = volinc   } },
+    { 0,                       XF86XK_AudioLowerVolume, spawn, {.v = voldec } },
+	{ 0,                       XF86XK_AudioMute, spawn,        {.v = volmute } },
 	{ MODKEY,                       XK_Return,     spawn, 		           {.v = termcmd } },
 	{ MODKEY,                       XK_grave,      cyclelayout, 		           {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = dmenucmd } },
