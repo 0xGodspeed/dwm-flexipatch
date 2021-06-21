@@ -26,9 +26,9 @@ static char normbordercolor[]            = "#444444";
 static char normfloatcolor[]             = "#db8fd9";
 
 static char selfgcolor[]                 = "#eeeeee";
-static char selbgcolor[]                 = "#974100";
-static char selbordercolor[]             = "#974100";
-static char selfloatcolor[]              = "#974100";
+static char selbgcolor[]                 = "#be5046";
+static char selbordercolor[]             = "#be5046";
+static char selfloatcolor[]              = "#be5046";
 
 static char titlenormfgcolor[]           = "#bbbbbb";
 static char titlenormbgcolor[]           = "#222222";
@@ -36,9 +36,9 @@ static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
 static char titleselfgcolor[]            = "#eeeeee";
-static char titleselbgcolor[]            = "#974100";
-static char titleselbordercolor[]        = "#974100";
-static char titleselfloatcolor[]         = "#974100";
+static char titleselbgcolor[]            = "#be5046";
+static char titleselbordercolor[]        = "#be5046";
+static char titleselfloatcolor[]         = "#be5046";
 
 static char tagsnormfgcolor[]            = "#bbbbbb";
 static char tagsnormbgcolor[]            = "#222222";
@@ -46,13 +46,13 @@ static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#eeeeee";
-static char tagsselbgcolor[]             = "#974100";
-static char tagsselbordercolor[]         = "#974100";
-static char tagsselfloatcolor[]          = "#974100";
+static char tagsselbgcolor[]             = "#be5046";
+static char tagsselbordercolor[]         = "#be5046";
+static char tagsselfloatcolor[]          = "#be5046";
 
-static char hidfgcolor[]                 = "#974100";
+static char hidfgcolor[]                 = "#be5046";
 static char hidbgcolor[]                 = "#222222";
-static char hidbordercolor[]             = "#974100";
+static char hidbordercolor[]             = "#be5046";
 static char hidfloatcolor[]              = "#f76e0c";
 
 static char urgfgcolor[]                 = "#bbbbbb";
@@ -248,6 +248,7 @@ static const char *volmute[] = {"volume.sh",  "mute"};
 static const char *plrplay[] = {"playerctl", "--player=mpd,firefox, vlc", "play-pause"};
 static const char *plrnxt[] = {"playerctl", "--player=mpd,firefox, vlc", "next"};
 static const char *plrprev[] = {"playerctl", "--player=mpd,firefox, vlc", "previous"};
+static const char *roficmd[]  = { "/home/sophos/.config/rofi/launchers/text/launcher.sh"};
 //static const char *plrplay[] = {"playerctl", "play-pause"};
 //static const char *plrnxt[] = {"playerctl",  "next"};
 //static const char *plrprev[] = {"playerctl",  "previous"};
@@ -262,7 +263,8 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioMute, spawn,        {.v = volmute } },
 	{ MODKEY,                       XK_Return,     spawn, 		           {.v = termcmd } },
 	{ MODKEY,                       XK_grave,      cyclelayout, 		           {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = dmenucmd } },
+	/* { MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = dmenucmd } }, */
+	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = roficmd} },
 	{ MODKEY,		                XK_f,      	   spawn,          		   {.v = firefox } },
 	{ MODKEY,		                XK_s,      	   spawn,          		   {.v = subl } },
 	{ MODKEY,		                XK_e,      	   spawn,          		   {.v = pcmanfm } },
