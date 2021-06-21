@@ -26,9 +26,9 @@ static char normbordercolor[]            = "#444444";
 static char normfloatcolor[]             = "#db8fd9";
 
 static char selfgcolor[]                 = "#eeeeee";
-static char selbgcolor[]                 = "#be5046";
-static char selbordercolor[]             = "#be5046";
-static char selfloatcolor[]              = "#be5046";
+static char selbgcolor[]                 = "#BF5D6F";
+static char selbordercolor[]             = "#BF5D6F";
+static char selfloatcolor[]              = "#BF5D6F";
 
 static char titlenormfgcolor[]           = "#bbbbbb";
 static char titlenormbgcolor[]           = "#222222";
@@ -36,9 +36,9 @@ static char titlenormbordercolor[]       = "#444444";
 static char titlenormfloatcolor[]        = "#db8fd9";
 
 static char titleselfgcolor[]            = "#eeeeee";
-static char titleselbgcolor[]            = "#be5046";
-static char titleselbordercolor[]        = "#be5046";
-static char titleselfloatcolor[]         = "#be5046";
+static char titleselbgcolor[]            = "#BF5D6F";
+static char titleselbordercolor[]        = "#BF5D6F";
+static char titleselfloatcolor[]         = "#BF5D6F";
 
 static char tagsnormfgcolor[]            = "#bbbbbb";
 static char tagsnormbgcolor[]            = "#222222";
@@ -46,13 +46,13 @@ static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#eeeeee";
-static char tagsselbgcolor[]             = "#be5046";
-static char tagsselbordercolor[]         = "#be5046";
-static char tagsselfloatcolor[]          = "#be5046";
+static char tagsselbgcolor[]             = "#BF5D6F";
+static char tagsselbordercolor[]         = "#BF5D6F";
+static char tagsselfloatcolor[]          = "#BF5D6F";
 
-static char hidfgcolor[]                 = "#be5046";
+static char hidfgcolor[]                 = "#BF5D6F";
 static char hidbgcolor[]                 = "#222222";
-static char hidbordercolor[]             = "#be5046";
+static char hidbordercolor[]             = "#BF5D6F";
 static char hidfloatcolor[]              = "#f76e0c";
 
 static char urgfgcolor[]                 = "#bbbbbb";
@@ -242,6 +242,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *firefox[]  = { "firefox", NULL };
 static const char *subl[]  = { "subl", NULL };
 static const char *pcmanfm[]  = { "pcmanfm", NULL };
+static const char *okular[]  = { "okular", NULL };
 static const char *volinc[] = {"volume.sh", "up"};
 static const char *voldec[] = {"volume.sh", "down"};
 static const char *volmute[] = {"volume.sh",  "mute"};
@@ -268,6 +269,7 @@ static Key keys[] = {
 	{ MODKEY,		                XK_f,      	   spawn,          		   {.v = firefox } },
 	{ MODKEY,		                XK_s,      	   spawn,          		   {.v = subl } },
 	{ MODKEY,		                XK_e,      	   spawn,          		   {.v = pcmanfm } },
+	{ MODKEY,		                XK_o,      	   spawn,          		   {.v = okular } },
 	{ MODKEY,                       XK_b,          togglebar,              {0} },
 	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
 	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
@@ -310,7 +312,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,              XK_9,          incrovgaps,             {.i = +1 } },
 	{ MODKEY|Mod1Mask|ShiftMask,    XK_9,          incrovgaps,             {.i = -1 } },
 	{ Mod1Mask|ShiftMask,             XK_0,        togglegaps,             {0} },
-	{ MODKEY|Mod1Mask|ShiftMask,    XK_0,          defaultgaps,            {0} },
+	{ MODKEY|ShiftMask,    XK_0,          defaultgaps,            {0} },
 	{ MODKEY,                       XK_Tab,        view,                   {0} },
 	{ MODKEY|ControlMask,           XK_z,          showhideclient,         {0} },
 	{ MODKEY, 			            XK_w,          killclient,             {0} },
